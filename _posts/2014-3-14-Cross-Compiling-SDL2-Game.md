@@ -31,13 +31,13 @@ int main(int argc, char *argv[]) {
 ```
 
 
-###Get your Compilers
+### Get your Compilers
 
-####Get a Linux C compiler:
+#### Get a Linux C compiler:
 
 `sudo apt-get install build-essential`
 
-####For cross-compiling to Windows (both x86 and x64):
+#### For cross-compiling to Windows (both x86 and x64):
 
 `sudo apt-get install gcc-mingw32`
 
@@ -48,7 +48,7 @@ Windows x86 | i686-w64-mingw32-gcc | /usr/i686-w64-mingw32/
 Windows x64 | x86_64-w64-mingw32-gcc | /usr/x86_64-w64-mingw32/
 
 
-###Get SDL2 for Linux
+### Get SDL2 for Linux
 
 If you're on an Ubuntu >= saucy, on x86/x64, its easy to get SDL2:
 
@@ -57,7 +57,7 @@ If you're on an Ubuntu >= saucy, on x86/x64, its easy to get SDL2:
 (if you're on ARM, you'll probably have issues compiling libsdl2-image's dependencies, and its not in the main repositories yet)
 
 
-###Get SDL2 for Windows (in Linux)
+### Get SDL2 for Windows (in Linux)
 
 Crosscompiling SDL2 itself didn't work out well, so download the SDL2-devel-2.0.1-mingw archive.
 
@@ -66,7 +66,7 @@ Also download the SDL2_image-devel-2.0.0-mingw.tar.gz
 Extract both of these to: `/usr/x86_64-w64-mingw32/`
 
 
-##Building the Game
+## Building the Game
 
 A Makefile will drastically simplify the development process, heres an example Makefile:
 
@@ -104,16 +104,16 @@ Linux build & run if no errors: `make run`
 Windows build: `make win32`
 
 
-##Troubleshooting
+## Troubleshooting
 
-####(Windows)  "The application was unable to start correctly: 0xc000007b"
+#### (Windows)  "The application was unable to start correctly: 0xc000007b"
 Might have a 32bit/64bit issue. Check that your SDL2.dll, SDL2_image.dll, libjpeg-9.dll, and your game executable are all the same architecture.
 
-####(Building) "fatal error: SDL2.h: No such file or directory"
+#### (Building) "fatal error: SDL2.h: No such file or directory"
 SDL2 isn't installed in a place gcc is currently looking. The example Makefile looks in /usr/include/, and apt-get should be installing it there. make install might not.
 
-####(Building) "undefined reference to `IMG_Init'"
+#### (Building) "undefined reference to `IMG_Init'"
 You're missing the gcc argument -lSDL2_image
 
-####(Building) " error: ‘IMG_INIT_JPG’ undeclared (first use in this function)"
+#### (Building) " error: ‘IMG_INIT_JPG’ undeclared (first use in this function)"
 Your source file is missing #include <SDL2/SDL_image.h>
